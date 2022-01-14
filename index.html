@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- ################################################################################################ -->
+    <title>TodayIW</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link href="layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js"
+        integrity="sha512-u9akINsQsAkG9xjc1cnGF4zw5TFDwkxuc9vUp5dltDWYCSmyd0meygbvgXrlc/z7/o4a19Fb5V0OUE58J7dcyw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="js/main.js"></script>
+    <script>
+        $(document).ready(function () {
+            $.getJSON('tags.json', function (data) {
+                var html = '<header> <ul class="nospace inline pushright"> <li>';
+                $.each(data, function (key, val) {
+                    html += '<li><a id="' + val.id + '" class="cs cc" onclick="toggle_category(' + val.id + ')">' + val.type + '<a></li>';
+                });
+                html += '</ul>';
+                $('#result').html(html);
+            });
+        });
+    </script>
+    <!-- ################################################################################################ -->
+</head>
+
+<body>
+    <div class="wrapper row1">
+        <header id="header" class="hoc clear">
+            <!-- ################################################################################################ -->
+            <div id="logo" class="fl_left">
+                <h1><a href="index.html"></a>今天我想來點</h1>
+            </div>
+            <nav id="mainav" class="fl_right">
+                <ul class="clear">
+                    <li class="active"><a href="index.html">主頁</a></li>
+                    <li><a class="drop" href="#">修改內容</a>
+                        <ul>
+                            <li><a href="jsoneditor.html">新增</a></li>
+                            <li><a href="delete.html">刪除</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                </ul>
+                <ul></ul>
+            </nav>
+            <!-- ################################################################################################ -->
+        </header>
+    </div>
+    <div class="wrapper bgded overlay" style="background-image:url('/images/background.png');">
+        <div id="pageintro" class="hoc clear">
+            <!-- ################################################################################################ -->
+            <article>
+                <input type="hidden" id="f_f" name="f_f" value="0">
+                <ul class="nospace inline pushright">
+                    <a>標籤(預設聯集)</a>
+                    <ul></ul>
+                    <div id="myButtons1" class="bs-example">
+                        <li><a id="0" class="cs cc" onclick="toggle_category(0)">聯集</a></li>
+                        <li><a id="1" class="cs cc" onclick="toggle_category(1)">交集</a></li>
+                </ul>
+                <ul></ul>
+                <header>
+                    <ul class="nospace inline pushright">
+                        <div id="result" class="box"></div>
+                    </ul>
+                    <ul></ul>
+                    <div style="width:100px;overflow-x:auto"></div>
+                </header>
+                <footer>
+                    <ul class="nospace inline pushmiddle">
+                        <li><a id="reset" class="btn inverse" href="javascript:location.reload();">重置</a></li>
+
+                    </ul>
+                    <ul></ul>
+                    <ul></ul>
+                    <ul></ul>
+                    <ul></ul>
+                    <ul class="nospace inline pushmiddle">
+                        <li><a id="result" class="btn inverse" type="button" onclick="toggle_result()">確定</a></li>
+                    </ul>
+                </footer>
+            </article>
+            <!-- ################################################################################################ -->
+        </div>
+    </div>
+</body>
+<footer>
+
+</footer>
+
+</html>

@@ -1,0 +1,79 @@
+<html>
+
+<head>
+    <title>Result</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link href="/layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js"
+        integrity="sha512-u9akINsQsAkG9xjc1cnGF4zw5TFDwkxuc9vUp5dltDWYCSmyd0meygbvgXrlc/z7/o4a19Fb5V0OUE58J7dcyw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        $(document).ready(function () {
+            $.getJSON('/exresult2.json', function (data) {
+                var html = '<header> <div class="postlist">';
+                $.each(data, function (key, val) {
+                    html += '<div class:"list cell"><p><a id="" class="post" ><a href="https://www.google.com.tw/search?q='+val.name+'"><h1>'+ val.name + '</h1><a></p></div>';
+                });
+                html += '</div>';
+                $('#result').html(html);
+            });
+        });
+    </script>
+
+</head>
+
+<body>
+    <div class="wrapper row1">
+        <header id="header" class="hoc clear">
+            <!-- ################################################################################################ -->
+            <div id="logo" class="fl_left">
+                <h1><a href="/index.html"></a>今天我想來點</h1>
+            </div>
+            <nav id="mainav" class="fl_right">
+                <ul class="clear">
+                    <li class="active"><a href="/index.html">主頁</a></li>
+                    <li><a class="drop" href="#">修改內容</a>
+                        <ul>
+                            <li><a href="/jsoneditor.html">新增</a></li>
+                            <li><a href="/delete.html">刪除</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                </ul>
+                <ul></ul>
+            </nav>
+            <!-- ################################################################################################ -->
+        </header>
+    </div>
+    <div class="wrapper bgded overlay" style="background-image:url('/images/background.png');">
+        <div id="pageintro" class="hoc clear">
+            <!-- ################################################################################################ -->
+            <div class="wrapper bgded overlay" >
+                <div id=" result" class="hoc clear">
+                <!-- ################################################################################################ -->
+                <article>
+                        <div id="result" class="post"></div>
+                        <ul></ul>
+                    <ul></ul>
+                    <footer>            
+                        <ul></ul>
+                        <ul></ul>
+                        <ul></ul>
+                        <ul></ul>
+                    </footer>
+                </article>
+                <!-- ################################################################################################ -->
+            </div>
+            </div>
+            <!-- ################################################################################################ -->
+        </div>
+    </div>
+</body>
+
+</html>
